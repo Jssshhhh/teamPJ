@@ -1,0 +1,715 @@
+09-05-목요일에 ip변경 
+영임쌤ip   \\ 192.168.100.54
+
+*---------------------------------------------------------------
+
+mysql명령어처리 MySQL workbench툴 = GUI환경
+
+파이썬코드 + naver데이터베이스 test필드 연결 
+
+
+
+ # naver데이터베이스는 이미생성했습니다. 다시 생성하지 마세요
+ use naver ;  
+ show tables ;
+ drop table goods ;
+ create table goods(
+   idx  int(4) auto_increment primary key, 
+   code int(4) not null ,
+   name varchar(10) not null,
+   su   int  default 0 ,
+   dan  int  default 0 ,
+   wdate datetime default now()
+ );
+ 
+ desc goods ;
+
+insert into goods(code,name,su,dan) values(3300,'kim',23,10) ;
+insert into goods(code,name,su,dan) values(5500,'goo',90,70) ;
+insert into goods(code,name,su,dan) values(6600,'lee',45,20) ;
+insert into goods(code,name,su,dan) values(7700,'red',35,20) ;
+insert into goods(code,name,su,dan) values(2200,'cho',45,20) ;
+select * from goods ;
+commit ;
+
+
+문제1] 행번호 출력  mysql에서는 변수선언시 @변수
+ select gs.* from goods gs ;
+ select @rn:=@rn+1 "rn", gs.* from goods gs, (select @rn := 0) my; 
+ select @rn:=@rn+1 "rn", code,name,dan  from goods, (select @rn := 0) my; 
+
+
+문제2]  su필드*dan필드 연산한결과값 큰값순으로 소트 
+ select idx,code,name,su,dan,(su*dan) as "total" from goods ;
+ select code,name,su,dan,(su*dan) total, rank() over(order by (su*dan) desc ) from goods ;
+ select code,name,su,dan,(su*dan) total, rank() over(order by (su*dan) desc ) "순서" from goods ;
+
+문제3] goods상품굿즈 테이블 문제1+문제2   
+           맨앞행번호, 맨뒤 순위 
+
+문제4] sum(dan) over(order by ~~~)   dan누적
+ select code,name,dan, sum(dan) "누적" from goods ;
+
+select code,name,dan , 
+  sum(dan) over(order by code rows 
+               between unbounded preceding and current row) "누적" from goods ;
+
+
+
+09-19-목요일
+문제1] test테이블 today필드 wdate필드이름변경 
+ desc test;
+ alter table test rename column today to wdate ;
+ 
+ select rpad(789, 10, '*') "표시";
+ select lpad(789, 10, '*') "표시";
+ select replace('jack' , 'j', 'bl') "결과" ;
+ select replace('jack' , 'j', 'bl')  ;
+ 
+ select now()  "날짜" ;
+ select sysdate()  "날짜" ;
+ select date_format(sysdate(), '%Y-%m-%d') "날짜" ;
+ select str_to_date('29 08 2024', '%d %m %Y') "날짜" ;
+ select str_to_date('29 08 2024', '%d-%m-%Y') "날짜" ;  -- null
+ 
+ select cast('12.3456' as decimal(10,1)) "결과" ;
+ select round('98.3456' ,1) "결과" ;
+ 
+ select now()  "날짜" ;     -- 2024-09-19 09:36:28
+ select sysdate()  "날짜" ;  -- 2024-09-19 09:36:28
+ select current_date() "날짜" ;  -- 2024-09-19
+ select current_time() ;   -- 09:36:10
+ select current_timestamp() ;  -- 2024-09-19 09:36:28
+
+
+ select * from dept ;  -- 4건 ~ 5건
+ select * from salgrade ;  -- 5건 
+ select * from emp ;  -- 14건 ~ 16건 
+
+
+문제2]  (sal+comm) "total" from em ;
+ select * from emp ;
+ select empno,ename,sal,comm, (sal+comm) "total" from emp ;
+ select empno,ename,sal,comm, (sal+ifnull(comm,0)) "total" from emp ;
+
+문제3] emp테이블에 맨왼쪽 rn행번호  @변수이름 := 0 
+ select @rn := @rn+1 rn, e.* from emp e , (select @rn:=0) my ;
+
+
+문제4] 조인  dept(dname,loc) emp테이블(empno,ename,job,sal)
+       job필드에 조건까지 추가해서 조인
+
+select e.empno,e.ename, e.deptno, d.dname, d.loc, e.sal
+from  emp e, dept d  where  e.deptno = d.deptno ;
+
+select e.empno,e.ename,e.sal,e.deptno, d.dname, d.loc 
+from  emp e inner join  dept d  on  e.deptno = d.deptno ;
+
+select * from   emp ; 
+
+select e.empno,e.ename, e.deptno, d.dname, d.loc, e.sal , e.job
+from  emp e, dept d  where  e.deptno = d.deptno
+and  job ='SALESMAN' ;
+ 
+select e.empno,e.ename,e.sal,e.deptno, d.dname, d.loc, e.job
+from  emp e inner join  dept d  on  e.deptno = d.deptno
+where job ='MANAGER' ;
+
+
+문제5]  서브쿼리 3종류 - 테이블역할, 새로운필드생성, where조건 값으로 
+-- 1)테이블역할inlineView서브쿼리, 새로운필드스칼라서브쿼리, 조건절where조건값서브쿼리
+-- 관리자 empno필드 mgr필드 
+
+explain select * from emp ;  -- 첫번째 SMITH사번확인후 참조여부 7369일반사원
+
+
+
+-- 관리자 아닌 사람  SMITH, MILLER 10건
+explain  select * from emp where empno not in (select ifnull(mgr,0) from emp );
+explain  select * from emp where not exists (select mgr from emp m where emp.empno = m.mgr );
+ 
+
+-- 관리자인사람 6건
+explain select * from emp  where empno in ( select mgr from emp );
+
+
+explain select * from emp ;
+
+explain select * from test where code >= 3300 and  code <= 7700 ;
+explain select * from test where code between 3300 and  7700 ;
+
+--합집합
+explain  SELECT DEPTNO FROM EMP
+ UNION SELECT DEPTNO FROM DEPT;
+
+explain  SELECT DEPTNO FROM EMP
+ UNION ALL SELECT DEPTNO FROM DEPT;
+
+--교집합
+explain  SELECT DEPTNO FROM EMP
+ INTERSECT SELECT DEPTNO FROM DEPT;
+
+explain  SELECT DEPTNO FROM DEPT
+ MINUS SELECT DEPTNO FROM EMP;
+
+
+-- index = 색인 설명
+오라클, mysql 데이터베이스 RDB = relation database 
+dept테이블(pk deptno필드, dname, loc)
+emp테이블(pk empno필드, ename,~~, 맨마지막 deptno참조)
+               맨마지막 deptno참조 = FK
+
+index은 자동으로 pk필드로 자동index화
+show databases ;
+show tables ;
+show index from test ;
+show index from dept ;
+show index from  emp ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+기타문제] code필드열에서  3300 ~ 7700 구간 조회 
+select * from test where code >= 3300 and  code <= 7700 ;
+select * from test where code between 3300 and  7700 ;
+
+# SET OPERATOR
+UNION : 합집합 (중복되는 것은 1번만)
+UNION ALL:합집합 (중복되는 것 모두)
+INTERSECT :교집합
+MINUS : 차집합
+
+--합집합
+SELECT DEPTNO FROM EMP
+ UNION SELECT DEPTNO FROM DEPT;
+
+SELECT DEPTNO FROM EMP
+ UNION ALL SELECT DEPTNO FROM DEPT;
+
+--교집합
+SELECT DEPTNO FROM EMP
+ INTERSECT SELECT DEPTNO FROM DEPT;
+
+SELECT DEPTNO FROM DEPT
+ MINUS SELECT DEPTNO FROM EMP;
+
+
+
+윈도우시작 cmd = command 
+C:\Users\user> path
+C:\Users\user> cls
+C:\Users\user> mysql -u root -p
+   Enter password:  1234
+
+mysql> select * from test ;
++------+------+------+---------------------+
+| code | name | hit  | today               |
++------+------+------+---------------------+
+| 2200 | choi |    0 | 2024-09-12 11:25:09 |
+| 7700 | snow |    0 | 2011-09-28 00:00:00 |
+| 9900 | cake |   12 | 2024-09-12 11:25:09 |
++------+------+------+---------------------+
+3 rows in set (0.00 sec)
+
+
+#쥬피터 노트북에서  라이브러리설치  !pip~~~
+#VScode 편집기에서 적용  test테이블진행 
+영임쌤ip   \\ 192.168.100.54
+
+C:~~~~> pip install pymysql
+
+import pymysql
+
+config = {
+    'host' : '127.0.0.1',
+    'user' : 'root',
+    'password' : '1234',
+    'database' : 'naver',
+    'port' : 3306
+}
+
+CN = pymysql.connect(**config)
+cursor = CN.cursor()
+
+msg = "select * from test "
+cursor.execute(msg)
+rows = cursor.fetchall()
+
+for r in rows:
+    print(r[0], r[1], r[2], r[3] )
+print('레코드갯수 ', len(rows))
+
+
+
+/////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
+설명 alter table 테이블명 명령어 
+ alter table test add( hit int(3)  default 0) ;
+ alter table test add( today  datetime  default now() ) ;
+ select * from test ;
+ commit ;
+ 
+ 3건정도 있으면 됩니다.
+ idx열추가  
+ alter table test add( idx  int(3) ) first ;
+ alter table test add  idx  int(3)  first ;
+ 숫자자동증가 auto_increment 속성 
+
+ emp & dept테이블  pk, fk 키값확인
+ emp & dept테이블  join
+ test기반 테이블 sosi테이블 여러분생성
+  ㄴ전체출력을 함수구현  영임쌤
+  ㄴ신규등록을 함수구현  영임쌤
+  ㄴ삭제처리를 함수구현 여러각자
+
+
+
+
+# 09-12-목요일
+desc test ;
+
+첫번째 alter table 테이블명 명령어 
+         wdate열추가  타입 date/datetime 기본값 now() 
+ alter table test  add( wdate  datetime  default now() ) ;
+
+두번째 alter table 테이블명 명령어 
+        hit열추가 숫자타입   기본값 0
+ alter table test  add( hit int(3)  default 0) ;
+
+세번째  alter table 테이블명 명령어 
+       title필드명을  name필드로 변경 
+ alter table test  rename column title to name  ;
+ commit ;
+
+
+4번째 alter table 테이블명 명령어 
+         today열추가  타입 date/datetime 기본값 now() 
+ alter table test  add( today  datetime  default now() ) ;
+
+
+5번째 test테이블 신규등록 desc test ; 
+      5567 hong
+      select * from test ;   
+
+ 
+6번째  alter table 테이블명 명령어
+      wdate추가한 필드 삭제
+         select * from test  
+
+   alter table test drop column wdate ;
+   select * from test  ;
+
+7번째  select ~~~  
+ code필드열에서  3300조회
+ code필드열에서  3300/6600  in() 
+ select * from test where code in(3300,6600);  
+
+ code필드열에서  7700 ,  name필드에서 choi  조회 or
+  select * from test 
+  where code = 7700 or name ='choi' ;
+ 
+
+ code필드열에서  3300 ~ 7700 구간 조회 
+select * from test where code >= 3300 and  code <= 7700 ;
+select * from test where code between 3300 and  7700 ;
+
+ name필드에서  'park'  "park" 
+ name필드에서  a포함 like키워드
+ 에러 select * from test where name like = '%a%' ;
+ 정답 select * from test where name like '%a%' ;
+
+ name필드에서 첫글자가 반드시 c시작하는 
+ select * from test where name like 'c%' ;
+
+
+8번째  수정update ~ where 이름중에서 a포함 hit조회 12변경
+ select * from test where name like '%a%' ;
+ update test set hit = 12 where name like '%a%' ;
+
+code = 7700 데이터의 날짜 28-05-2011 변경대상필드 today적용
+code = 3300 데이터의 날짜 16-03-2013 변경대상필드 today적용
+ update test set today=str_to_date('28-09-2011', '%d-%m-%Y') where code=7700  ;
+ 
+update test set 
+      today=str_to_date('16-03-2013', '%d-%m-%Y') where code=3300  ;
+
+참고 STR_TO_DATE('28-09-2011, '%d-%m-%Y')
+
+
+9번째  삭제delete ~ where  code 3345삭제,  code 6600삭제
+delete  from  test  where code = 3345 ;
+delete  from  test  where code = '6600' ;
+delete  from  test  where code = '5567' ;
+delete  from  test  where code = 3300 ;
+select * from test ;
+
+mysql> select * from test ;
++------+------+------+---------------------+
+| code | name | hit  | today               |
++------+------+------+---------------------+
+| 2200 | choi |    0 | 2024-09-12 11:25:09 |
+| 7700 | snow |    0 | 2011-09-28 00:00:00 |
+| 9900 | cake |   12 | 2024-09-12 11:25:09 |
++------+------+------+---------------------+
+
+mysql> select t.* from test t ;
+에러 mysql> select rownum, t.* from test t ;
+에러 mysql> select rownum, code,name,hit,today from test ;
+에러 mysql> select rownum, tt.* from test  tt ;
+에러 mysql> select rownum(), tt.* from test  tt ;
+
+mysql에서 행번호 기술 @변수이름  := 값 
+ select @rownum:=@rownum+1  rn, code,name,hit,today 
+        from test, (select @rownum := 0) rowtable ;
+
+
+ select @rownum:=@rownum+1  rn, code,name,hit,today 
+        from test, (select @rownum := 0) imsi ;
+
+mysql> select * from emp  where job  = 'MANAGER' ;
+mysql> select * from emp  where job  = 'manager' ;
+
+commit ;
+show tables ;
+mysql내장함수  숫자,문자,날짜,기타함수 실습후 자동숫자발생 
+primary key=PK,  foreign key = FK
+
+
+ select now(),  now() "날짜"   ;
+ select round(78.5396, 2 ) ;  -- 78.54
+ select round(78.5346, 2 ) ;  -- 78.53
+
+ select 12345.6789,  format(12345.6789, 2) ;
+ select 12345.5346,  format(12345.5346, 2) ;
+
+ A:65  a:97  0:48
+select ascii('A') 결과 ; 
+select ascii('a') 결과 ; 
+select ascii('0') 결과 ; 
+
+select concat('my first', 'css', 'style') ;
+
+select replace('my first css', 'first', 'two') ;
+select insert('myfirst css', 3, 6 ,'aws') ;
+select insert('i love you', 3, 4 ,'cake') ;
+
+select left('watersamdasu', 5) ;
+select right('watersamdasu', 5) ;
+select mid('watersamdasu', 6,3) ;
+
+select lower('MONday LG KT') ;
+select upper('monDAY gl ts') ;
+select reverse('monDAY gl ts') ;
+
+select -74,  abs(-74)  ;
+select  31.6,  ceil(31.6), 31.4 , ceil(31.4)  ;
+select  10.1 ,  floor(10.1)  ;
+
+문제  19/3=6.333333
+문제  19%3  mod()
+        select 19%3 ;
+        select mod(19,3) ;
+
+ select  format(19/3 , 2)  ; 결과는 6.33
+ select  format(19/3 , 0)  ; 결과는 정수 6
+
+
+ 에러 select max(15, 6, 179, 10);
+ 에러 select min(15, 6, 179, 10);
+ select greatest(15, 6, 179, 10);
+ select least(15, 6, 179, 10);
+
+ select max(code) from test ;
+ select min(code) from test ;
+ 집계함수 sum(필), max(필),min(필),count(필),avg(필)
+
+ mysql데이터베이스  특정 데이터베이스선택 use DB명 ;
+ mysql데이터베이스  test테이블 필드추가,삭제,수정
+ mysql데이터베이스  test테이블  DML
+
+ mysql + 파이썬에서 mysql접근후 CN, cursor커서 
+ 
+ select @rownum:=@rownum+1  rn, code,name,hit,today 
+        from test, (select @rownum := 0) imsi ;
+
+ select @rn:=@rn+1  rn, code,name,hit,today 
+        from test, (select @rn := 0) myrow ;
+
+ 
+
+config = {
+    'host' : '127.0.0.1',
+    'user' : 'root',
+    'password' : '1234',
+    'database' : 'naver',
+    'port' : 3306,
+    'charset':'utf8',
+    'use_unicode' : True
+}
+
+
+config = {
+    'host' : '127.0.0.1',
+    'user' : 'root',
+    'password' : '1234',
+    'database' : 'naver',
+    'port' : 3306
+}
+
+
+
+첫번째  mysql데이터베이서 naver디비명 사용, 테이블 test
+
+!pip install  pymysql
+
+import  pymysql  
+
+config = {
+    'host' : '127.0.0.1',
+    'user' : 'root',
+    'password' : '1234',
+    'database' : 'naver',
+    'port' : 3306
+}
+
+CN = pymysql.connect(**config)
+cursor = CN.cursor()
+
+
+
+
+
+
+오라클에서 행번호
+SQL> select rownum,code,name,title,sal,wdate,grade from sosi ;
+SQL> select rownum, ss.*  from sosi  ss;
+
+mysql내장함수  숫자,문자,날짜,기타함수 실습
+행번호 표시 어려워요 , sosi테이블
+mysql> system cls ;    
+mysql> select version() ;
+mysql> show databases ;
+mysql> select now() ;
+
+mysql> select sysdate() ;
+mysql> select current_time() ;  -- 시분초 시간만 표시 
+
+mysql> use sakila ;
+mysql> show tables ;
+mysql> desc city ;
+mysql> select * from city ;
+
+
+
+
+
+
+
+mysql> select database() ;
+mysql> select count(*) "갯수" from city ;
+mysql> select count(*) cnt from city ;
+mysql> select count(*) from city ;
+mysql> system cls ; 
+mysql> 
+
+//9월11일 수요일에 이미 데이터베이스 작성 생략 
+mysql> create database naver ;
+mysql> show databases ;
+       //naver이름의 데이터베이스 사용=선택  use
+
+mysql> use naver ;
+mysql> show tables ;
+mysql> create table test( 
+         code int(4) primary key ,
+         title varchar(10) not null
+       );
+mysql> commit ;
+mysql> show tables ;
+mysql> desc test ;
+mysql> insert into test values( 3300, 'rain') ;
+mysql> insert into test values( 7700, 'snow') ;
+mysql> select * from test ;
+
+
+
+mysql> show variables like "c%" ; --한글체계지원
+mysql> status ;
+mysql> system cls ;
+
+
+//////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////
+DROP TABLE EMP;
+DROP TABLE DEPT;
+DROP TABLE SALGRADE;
+DROP TABLE bonus;
+
+
+DROP TABLE DEPT;
+CREATE TABLE DEPT(
+  DEPTNO int(2) primary key,
+  DNAME VARCHAR(14),
+  LOC   VARCHAR(13) 
+ ) ;
+
+
+DROP TABLE EMP;
+CREATE TABLE EMP(
+	EMPNO Int(4) PRIMARY KEY,
+	ENAME VARCHAR(10),
+ 	JOB   VARCHAR(9),
+	MGR   INT(4),
+	HIREDATE DATE,
+	SAL   int(7),
+	COMM  NUMERIC(5),
+	DEPTNO int(2) , 
+	foreign key(DEPTNO)  references  dept(DEPTNO) on delete cascade   
+);
+
+
+DROP TABLE SALGRADE;
+CREATE TABLE SALGRADE(
+    GRADE INT(1),
+    LOSAL NUMERIC(7, 2),
+    HISAL NUMERIC(7, 2)
+);
+
+
+INSERT INTO DEPT VALUES (10,'ACCOUNTING','NEW YORK');
+INSERT INTO DEPT VALUES (20,'RESEARCH','DALLAS');
+INSERT INTO DEPT VALUES (30,'SALES','CHICAGO');
+INSERT INTO DEPT VALUES (40,'OPERATIONS','BOSTON');
+INSERT INTO DEPT VALUES (55,'coder','seoul');
+
+INSERT INTO EMP  VALUES (7369,'SMITH','CLERK',    7902, STR_TO_DATE('17-12-2010', '%d-%m-%Y'), 1600, null, 30);
+INSERT INTO EMP  VALUES (7499,'ALLEN','SALESMAN', 7698, STR_TO_DATE('20-2-2011', '%d-%m-%Y'), 1600, 300, 30);
+INSERT INTO EMP  VALUES (7521,'WARD','SALESMAN',  7698, STR_TO_DATE('22-2-2011', '%d-%m-%Y'), 1250, 200, 30);
+INSERT INTO EMP  VALUES (7566,'JONES','MANAGER',  7839, STR_TO_DATE('2-4-2011', '%d-%m-%Y'), 2975, 30, 20);
+INSERT INTO EMP  VALUES (7654,'MARTIN','SALESMAN',7698, STR_TO_DATE('28-09-2011', '%d-%m-%Y'), 1250, 300, 30);
+INSERT INTO EMP  VALUES (7698,'BLAKE','MANAGER',  7839, STR_TO_DATE('1-5-2011', '%d-%m-%Y'), 2850, null, 30);
+INSERT INTO EMP  VALUES (7782,'CLARK','MANAGER',  7839, STR_TO_DATE('9-6-2011', '%d-%m-%Y'), 2450, null, 10);
+INSERT INTO EMP  VALUES (7788,'SCOTT','ANALYST',  7566, STR_TO_DATE('13-7-2017', '%d-%m-%Y'), 3000, null, 20);
+insert into emp values( 7839, 'KING', 'PRESIDENT', null, STR_TO_DATE ('17-11-2011','%d-%m-%Y'), 5000, 3500, 10); 
+insert into emp values( 7844, 'TURNER', 'SALESMAN', 7698, STR_TO_DATE('8-9-2011','%d-%m-%Y'), 1500, 0, 30); 
+insert into emp values( 7876, 'ADAMS', 'CLERK', 7788, STR_TO_DATE('13-7-2017', '%d-%m-%Y'), 1100, null, 20); 
+insert into emp values( 7900, 'JAMES', 'CLERK', 7698, STR_TO_DATE('3-12-2011','%d-%m-%Y'), 950, null, 30); 
+insert into emp values( 7902, 'FORD', 'ANALYST', 7566, STR_TO_DATE('3-12-2011','%d-%m-%Y'), 3000, null, 20); 
+insert into emp values( 7934, 'MILLER', 'CLERK', 7782, STR_TO_DATE('23-1-2012','%d-%m-%Y'), 1300, null, 10); 
+
+insert into emp values( 9933, 'kim', 'coder', 7782, now(), 7900, null, 30); 
+insert into emp values( 9955, 'lee', 'coder', 7782, CURRENT_TIMESTAMP, 4500, null, 20);  
+commit ;
+select * from emp ;
+
+INSERT INTO SALGRADE VALUES (1, 700, 1200);
+INSERT INTO SALGRADE VALUES (2, 1201, 1400);
+INSERT INTO SALGRADE VALUES (3, 1401, 2000);
+INSERT INTO SALGRADE VALUES (4, 2001, 3000);
+INSERT INTO SALGRADE VALUES (5, 3001, 4000);
+commit;
+
+DROP TABLE bonus;
+CREATE TABLE bonus
+ as
+select empno, ename, job, sal, comm  from emp
+
+commit ;
+select * from  emp ;
+
+
+
+-- 연습
+-- 문제1
+DROP DATABASE IF EXISTS mydb;
+CREATE DATABASE mydb;
+USE mydb;
+CREATE TABLE dept(
+  deptno INT NOT NULL PRIMARY KEY,
+  dname CHAR(14) NOT NULL,
+  loc CHAR(30) NULL
+);
+
+-- 문제2
+INSERT INTO dept VALUES
+(10,'경리부','서울'),
+(20,'인사부','인천'),
+(30,'영업부','용인'),
+(40,'전산부','수원');
+SELECT * FROM dept;
+
+-- 문제3
+DROP TABLE IF EXISTS emp;
+CREATE TABLE emp(
+  empno INT NOT NULL PRIMARY KEY,
+  ename CHAR(20) NOT NULL,
+  job CHAR(8) NOT NULL,
+  mgr CHAR(10) NULL,
+  hiredate DATE NOT NULL,
+  sal INT NOT NULL,
+  comm INT NULL,
+  deptno INT NOT NULL,  FOREIGN KEY(deptno) REFERENCES dept(deptno)
+);
+
+-- 문제4
+INSERT INTO emp VALUES
+(1001, '김예지, '팀장, 1013, '2007-03-01', 900, NULL, 20),
+(1002, '한예슬', '대리', 1005, '2008-10-01', 250,  80, 30),
+(1003, '홍지호', '과장', 1005,'2005-02-10', 500,  100, 30),
+(1004, '이병헌', '부장', 1008, '2003-09-02', 600, NULL, 20),
+(1005, '신동협', '과장', 1005, '2010-02-09', 450,  200, 30),
+(1006, '장동건', '부장', 1008, '2003-10-09', 480, NULL, 30),
+(1007, '이문세', '부장', 1008, '2004-01-08', 520, NULL, 10),
+(1008, '감우성', '차장', 1003, '2004-03-08', 500,  0, 30),
+(1009, '안성기', '사장', NULL, '1996-10-04', 1000, NULL, 20),
+(1010, '이병헌', '과장', 1003, '2005-04-07', 500, NULL, 10),
+(1011, '고은정',  '팀장, 1007, '2007-03-01',900, NULL, 30),
+(1012, '강혜정', '사원', 1006, '2007-08-09', 300, NULL, 20),
+(1013, '박중훈', '부장', 1003, '2002-10-09', 560, NULL, 20),
+(1014, '조인성', '사원', 1006, '2007-11-09', 250, NULL, 10);
+SELECT * FROM emp;
+
+-- 문제5
+DROP TABLE IF EXISTS salgrade;
+CREATE TABLE salgrade(
+  grade INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+  losal INT NOT NULL,
+  hisal INT NOT NULL
+);
+
+-- 문제6
+INSERT INTO salgrade VALUES
+(null, 700, 1200),
+(null, 1200, 1400),
+(null, 1700, 2000),
+(null, 2000, 3000),
+(null, 3000, 9999);
+SELECT * FROM salgrade;
+
+
+
+
+
+
+
+
+
+
+
