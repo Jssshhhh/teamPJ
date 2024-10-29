@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3415142ea500da14b853bf4ec6288bab {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3415142ea500da14b853bf4ec6288bab" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3415142ea500da14b853bf4ec6288bab = L.map(
+                "map_3415142ea500da14b853bf4ec6288bab",
+                {
+                    center: [35.19403166, 129.06151836],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c27a79d5da018652e71cb574c1701caf = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_c27a79d5da018652e71cb574c1701caf.addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+            var circle_marker_b2e368761504b603fcea507b763c36b7 = L.circleMarker(
+                [35.1694249627668, 126.888805470329],
+                {"bubblingMouseEvents": true, "color": "#ecf600", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ecf600", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_3822f82ec94725467a2be85f0301a192 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_bffaeb1fa25f960c38360e62bc9af30f = $(`<div id="html_bffaeb1fa25f960c38360e62bc9af30f" style="width: 100.0%; height: 100.0%;">광주 기아 챔피언스필드 승률: 48.8%</div>`)[0];
+                popup_3822f82ec94725467a2be85f0301a192.setContent(html_bffaeb1fa25f960c38360e62bc9af30f);
+            
+        
+
+        circle_marker_b2e368761504b603fcea507b763c36b7.bindPopup(popup_3822f82ec94725467a2be85f0301a192)
+        ;
+
+        
+    
+    
+            var circle_marker_b3579cf1bda3567c3b5e59487c4994af = L.circleMarker(
+                [35.8411289243023, 128.681236372268],
+                {"bubblingMouseEvents": true, "color": "#daed00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#daed00", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_c5335deb2d5942d67c3d146ab3b02738 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7e704b13eeda8c3e9f17ae117bed0ba5 = $(`<div id="html_7e704b13eeda8c3e9f17ae117bed0ba5" style="width: 100.0%; height: 100.0%;">대구 삼성 라이온즈 파크 승률: 50.0%</div>`)[0];
+                popup_c5335deb2d5942d67c3d146ab3b02738.setContent(html_7e704b13eeda8c3e9f17ae117bed0ba5);
+            
+        
+
+        circle_marker_b3579cf1bda3567c3b5e59487c4994af.bindPopup(popup_c5335deb2d5942d67c3d146ab3b02738)
+        ;
+
+        
+    
+    
+            var circle_marker_06b228a075234f097354193c99d14948 = L.circleMarker(
+                [37.5162500127349, 127.079283389854],
+                {"bubblingMouseEvents": true, "color": "#ffc000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffc000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_8779fa938ea8fb97daf765dea9c2e84e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f626fb82ea1ed4ea91286968edee9131 = $(`<div id="html_f626fb82ea1ed4ea91286968edee9131" style="width: 100.0%; height: 100.0%;">잠실야구장 승률: 43.1%</div>`)[0];
+                popup_8779fa938ea8fb97daf765dea9c2e84e.setContent(html_f626fb82ea1ed4ea91286968edee9131);
+            
+        
+
+        circle_marker_06b228a075234f097354193c99d14948.bindPopup(popup_8779fa938ea8fb97daf765dea9c2e84e)
+        ;
+
+        
+    
+    
+            var circle_marker_31cd1e79e4fd19cb38047eaa1e882607 = L.circleMarker(
+                [37.2978428909635, 127.011348102567],
+                {"bubblingMouseEvents": true, "color": "#ffec00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ffec00", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_b56ad137575b69973523fd6545a44c86 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d08461118f0997e2a3c57cae7bba63b0 = $(`<div id="html_d08461118f0997e2a3c57cae7bba63b0" style="width: 100.0%; height: 100.0%;">수원 kt 위즈 파크 승률: 46.2%</div>`)[0];
+                popup_b56ad137575b69973523fd6545a44c86.setContent(html_d08461118f0997e2a3c57cae7bba63b0);
+            
+        
+
+        circle_marker_31cd1e79e4fd19cb38047eaa1e882607.bindPopup(popup_b56ad137575b69973523fd6545a44c86)
+        ;
+
+        
+    
+    
+            var circle_marker_3e01317a64bcff39513096afa6066897 = L.circleMarker(
+                [37.4350819826381, 126.690759830613],
+                {"bubblingMouseEvents": true, "color": "#a2d100", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#a2d100", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_07edf8f29834efa15f982105c0719dad = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5b2f34a60c0b36d3c5c409152579806b = $(`<div id="html_5b2f34a60c0b36d3c5c409152579806b" style="width: 100.0%; height: 100.0%;">문학랜더스필드 승률: 53.9%</div>`)[0];
+                popup_07edf8f29834efa15f982105c0719dad.setContent(html_5b2f34a60c0b36d3c5c409152579806b);
+            
+        
+
+        circle_marker_3e01317a64bcff39513096afa6066897.bindPopup(popup_07edf8f29834efa15f982105c0719dad)
+        ;
+
+        
+    
+    
+            var circle_marker_0a08a7ca2bfefe91c8a7331b6afcd6fd = L.circleMarker(
+                [35.19403166, 129.06151836],
+                {"bubblingMouseEvents": true, "color": "#b6db00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#b6db00", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_1de9564dc9ff647447de2c88bb25eac3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_74df0558d07d447b098b99688b2fadbb = $(`<div id="html_74df0558d07d447b098b99688b2fadbb" style="width: 100.0%; height: 100.0%;">사직야구장 승률: 52.5%</div>`)[0];
+                popup_1de9564dc9ff647447de2c88bb25eac3.setContent(html_74df0558d07d447b098b99688b2fadbb);
+            
+        
+
+        circle_marker_0a08a7ca2bfefe91c8a7331b6afcd6fd.bindPopup(popup_1de9564dc9ff647447de2c88bb25eac3)
+        ;
+
+        
+    
+    
+            var circle_marker_3bd05e2f6fc31c1516ed3b2b4e9b4a59 = L.circleMarker(
+                [36.3173370007388, 127.428013823451],
+                {"bubblingMouseEvents": true, "color": "#369b00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#369b00", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_a2aaeb7f1ae5fb1b5fc4172f19979ad4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7d71bce6657775ede26c0af59f056e07 = $(`<div id="html_7d71bce6657775ede26c0af59f056e07" style="width: 100.0%; height: 100.0%;">대전 이글스파크 승률: 61.3%</div>`)[0];
+                popup_a2aaeb7f1ae5fb1b5fc4172f19979ad4.setContent(html_7d71bce6657775ede26c0af59f056e07);
+            
+        
+
+        circle_marker_3bd05e2f6fc31c1516ed3b2b4e9b4a59.bindPopup(popup_a2aaeb7f1ae5fb1b5fc4172f19979ad4)
+        ;
+
+        
+    
+    
+            var circle_marker_ff001095fc766313072106243640f198 = L.circleMarker(
+                [35.2219848625101, 128.579580117268],
+                {"bubblingMouseEvents": true, "color": "#ff4800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff4800", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_da0d80a62780e67e609be29be0d6e749 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_74f52825e8d9bf7d6bb7f1cb88ab8cd8 = $(`<div id="html_74f52825e8d9bf7d6bb7f1cb88ab8cd8" style="width: 100.0%; height: 100.0%;">마산, 창원 NC파크 승률: 35.0%</div>`)[0];
+                popup_da0d80a62780e67e609be29be0d6e749.setContent(html_74f52825e8d9bf7d6bb7f1cb88ab8cd8);
+            
+        
+
+        circle_marker_ff001095fc766313072106243640f198.bindPopup(popup_da0d80a62780e67e609be29be0d6e749)
+        ;
+
+        
+    
+    
+            var circle_marker_fca7c6e8e9cc49eede6a8a7476bda6d5 = L.circleMarker(
+                [37.4982125677913, 126.867088741096],
+                {"bubblingMouseEvents": true, "color": "#daed00", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#daed00", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_3415142ea500da14b853bf4ec6288bab);
+        
+    
+        var popup_d05f37c7342ab41903f707a234c34363 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_5e11de6710d054c6acf7445c5c6d7c80 = $(`<div id="html_5e11de6710d054c6acf7445c5c6d7c80" style="width: 100.0%; height: 100.0%;">고척스카이돔 승률: 50.0%</div>`)[0];
+                popup_d05f37c7342ab41903f707a234c34363.setContent(html_5e11de6710d054c6acf7445c5c6d7c80);
+            
+        
+
+        circle_marker_fca7c6e8e9cc49eede6a8a7476bda6d5.bindPopup(popup_d05f37c7342ab41903f707a234c34363)
+        ;
+
+        
+    
+</script>
+</html>
