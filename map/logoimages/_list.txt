@@ -1,0 +1,12 @@
+combined_logo.png
+doosan-bears.jpg
+hanwha-eagles.jpg
+kia-tigers.jpg
+kiwoom-heroes.jpg
+kt-wiz.jpg
+lg-twins.jpg
+lotte-giants.jpg
+nc-dinos.jpg
+samsung-lions.jpg
+ssg-landers.jpg
+_list.txt

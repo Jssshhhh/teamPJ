@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_86d1e5b6312f56262f4e847309a55a97 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_86d1e5b6312f56262f4e847309a55a97" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_86d1e5b6312f56262f4e847309a55a97 = L.map(
+                "map_86d1e5b6312f56262f4e847309a55a97",
+                {
+                    center: [36.5, 127.5],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 8,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_f9445819985a03ea3ee44f93f0fa93fd = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_f9445819985a03ea3ee44f93f0fa93fd.addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+            var circle_marker_25faa23b5877ec54899251f44614b85d = L.circleMarker(
+                [36.3173370007388, 127.428013823451],
+                {"bubblingMouseEvents": true, "color": "#800000", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#800000", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_ab77d13dbd7f4ec80a4ffd9d36601b07 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d28581ac7b6b42144af6ec1b1be6a404 = $(`<div id="html_d28581ac7b6b42144af6ec1b1be6a404" style="width: 100.0%; height: 100.0%;">대전</div>`)[0];
+                popup_ab77d13dbd7f4ec80a4ffd9d36601b07.setContent(html_d28581ac7b6b42144af6ec1b1be6a404);
+            
+        
+
+        circle_marker_25faa23b5877ec54899251f44614b85d.bindPopup(popup_ab77d13dbd7f4ec80a4ffd9d36601b07)
+        ;
+
+        
+    
+    
+            var circle_marker_4ac248f6a743a78cf818a056231ba981 = L.circleMarker(
+                [35.19403166, 129.06151836],
+                {"bubblingMouseEvents": true, "color": "#9B1C1C", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#9B1C1C", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_76de8c40e79693e1fab4ed97f96e7192 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_3a3abad6518189f1826adf12f2072736 = $(`<div id="html_3a3abad6518189f1826adf12f2072736" style="width: 100.0%; height: 100.0%;">사직</div>`)[0];
+                popup_76de8c40e79693e1fab4ed97f96e7192.setContent(html_3a3abad6518189f1826adf12f2072736);
+            
+        
+
+        circle_marker_4ac248f6a743a78cf818a056231ba981.bindPopup(popup_76de8c40e79693e1fab4ed97f96e7192)
+        ;
+
+        
+    
+    
+            var circle_marker_6b443c897bfd8731fcb3a6fae2f94165 = L.circleMarker(
+                [35.2219848625101, 128.579580117268],
+                {"bubblingMouseEvents": true, "color": "#B23939", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#B23939", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_624413c2e1ef0aea3d266c9547ebec6e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_036f078960c59c6408825c0cba5812ca = $(`<div id="html_036f078960c59c6408825c0cba5812ca" style="width: 100.0%; height: 100.0%;">창원</div>`)[0];
+                popup_624413c2e1ef0aea3d266c9547ebec6e.setContent(html_036f078960c59c6408825c0cba5812ca);
+            
+        
+
+        circle_marker_6b443c897bfd8731fcb3a6fae2f94165.bindPopup(popup_624413c2e1ef0aea3d266c9547ebec6e)
+        ;
+
+        
+    
+    
+            var marker_f774ef35cc23d7b133f4eb8483d12135 = L.marker(
+                [35.2219848625101, 128.579580117268],
+                {}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+            var div_icon_b2ab7d9e3f7f10578543b4cd258a9bdc = L.divIcon({"className": "empty", "html": "\n            \u003cdiv style=\"width: 30px; height: 30px; background-image: url(./logoimages/nc-dinos.jpg); background-size: 100%; background-position: center; background-repeat: no-repeat; border-radius: 50%; transform: translate(-30%, -30%);\"\u003e\u003c/div\u003e\n            "});
+            marker_f774ef35cc23d7b133f4eb8483d12135.setIcon(div_icon_b2ab7d9e3f7f10578543b4cd258a9bdc);
+        
+    
+        var popup_cc6b89bd4da5ebc22bf4d08510e7fe7b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e547196f549b6be7a144c4ee1332ef81 = $(`<div id="html_e547196f549b6be7a144c4ee1332ef81" style="width: 100.0%; height: 100.0%;">창원</div>`)[0];
+                popup_cc6b89bd4da5ebc22bf4d08510e7fe7b.setContent(html_e547196f549b6be7a144c4ee1332ef81);
+            
+        
+
+        marker_f774ef35cc23d7b133f4eb8483d12135.bindPopup(popup_cc6b89bd4da5ebc22bf4d08510e7fe7b)
+        ;
+
+        
+    
+    
+            var circle_marker_12f70956a3bd48bff9a11579a8857e99 = L.circleMarker(
+                [37.4350819826381, 126.690759830613],
+                {"bubblingMouseEvents": true, "color": "#C94D4D", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#C94D4D", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_fcf65423dc39089a0163c0651ad7a761 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b35718e52f921f2f0772aaf3aaaa4fb5 = $(`<div id="html_b35718e52f921f2f0772aaf3aaaa4fb5" style="width: 100.0%; height: 100.0%;">문학</div>`)[0];
+                popup_fcf65423dc39089a0163c0651ad7a761.setContent(html_b35718e52f921f2f0772aaf3aaaa4fb5);
+            
+        
+
+        circle_marker_12f70956a3bd48bff9a11579a8857e99.bindPopup(popup_fcf65423dc39089a0163c0651ad7a761)
+        ;
+
+        
+    
+    
+            var circle_marker_5c55cef44c041a60211f803063662f39 = L.circleMarker(
+                [37.2978428909635, 127.011348102567],
+                {"bubblingMouseEvents": true, "color": "#DB6B6B", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#DB6B6B", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_3a29ebc04a5f4340e9a183d4e62cbe5c = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e478d1dc30ac9bba0754eda6bce560df = $(`<div id="html_e478d1dc30ac9bba0754eda6bce560df" style="width: 100.0%; height: 100.0%;">수원</div>`)[0];
+                popup_3a29ebc04a5f4340e9a183d4e62cbe5c.setContent(html_e478d1dc30ac9bba0754eda6bce560df);
+            
+        
+
+        circle_marker_5c55cef44c041a60211f803063662f39.bindPopup(popup_3a29ebc04a5f4340e9a183d4e62cbe5c)
+        ;
+
+        
+    
+    
+            var circle_marker_50261d802a7355b6fc68dfd8bbb0b4c4 = L.circleMarker(
+                [35.1694249627668, 126.888805470329],
+                {"bubblingMouseEvents": true, "color": "#E89A9A", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#E89A9A", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_b958cc6c0c701fb1bebccf56c74eec9e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e9a1a3c106e4cc2b5cea757d9909211e = $(`<div id="html_e9a1a3c106e4cc2b5cea757d9909211e" style="width: 100.0%; height: 100.0%;">광주</div>`)[0];
+                popup_b958cc6c0c701fb1bebccf56c74eec9e.setContent(html_e9a1a3c106e4cc2b5cea757d9909211e);
+            
+        
+
+        circle_marker_50261d802a7355b6fc68dfd8bbb0b4c4.bindPopup(popup_b958cc6c0c701fb1bebccf56c74eec9e)
+        ;
+
+        
+    
+    
+            var circle_marker_95bb26db8b1bf3251fc71c4a14b66779 = L.circleMarker(
+                [35.8411289243023, 128.681236372268],
+                {"bubblingMouseEvents": true, "color": "#F3BDBD", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F3BDBD", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_04e38c4bfb0af6bd542cb77297206508 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e311f43fcd135fbe9fc4a6271c55a857 = $(`<div id="html_e311f43fcd135fbe9fc4a6271c55a857" style="width: 100.0%; height: 100.0%;">대구</div>`)[0];
+                popup_04e38c4bfb0af6bd542cb77297206508.setContent(html_e311f43fcd135fbe9fc4a6271c55a857);
+            
+        
+
+        circle_marker_95bb26db8b1bf3251fc71c4a14b66779.bindPopup(popup_04e38c4bfb0af6bd542cb77297206508)
+        ;
+
+        
+    
+    
+            var circle_marker_b7b5284d79dc3001ebbad09f1f639020 = L.circleMarker(
+                [37.5112525852452, 127.072863377526],
+                {"bubblingMouseEvents": true, "color": "#F8D7D7", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F8D7D7", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_32337ab4276e907fc5f1156110272d2d = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8ec4dffdba898b4520ebe24a37a286c6 = $(`<div id="html_8ec4dffdba898b4520ebe24a37a286c6" style="width: 100.0%; height: 100.0%;">잠실</div>`)[0];
+                popup_32337ab4276e907fc5f1156110272d2d.setContent(html_8ec4dffdba898b4520ebe24a37a286c6);
+            
+        
+
+        circle_marker_b7b5284d79dc3001ebbad09f1f639020.bindPopup(popup_32337ab4276e907fc5f1156110272d2d)
+        ;
+
+        
+    
+    
+            var circle_marker_77476f4e96eb57df9a9e3de6e8d6b26b = L.circleMarker(
+                [37.4982125677913, 126.867088741096],
+                {"bubblingMouseEvents": true, "color": "#FCECEC", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#FCECEC", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 15, "stroke": true, "weight": 3}
+            ).addTo(map_86d1e5b6312f56262f4e847309a55a97);
+        
+    
+        var popup_ed64f398899eb60846e7cb0df8fe0316 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_60a13e295bd77bbd4771b2b44819fea4 = $(`<div id="html_60a13e295bd77bbd4771b2b44819fea4" style="width: 100.0%; height: 100.0%;">고척</div>`)[0];
+                popup_ed64f398899eb60846e7cb0df8fe0316.setContent(html_60a13e295bd77bbd4771b2b44819fea4);
+            
+        
+
+        circle_marker_77476f4e96eb57df9a9e3de6e8d6b26b.bindPopup(popup_ed64f398899eb60846e7cb0df8fe0316)
+        ;
+
+        
+    
+</script>
+</html>
