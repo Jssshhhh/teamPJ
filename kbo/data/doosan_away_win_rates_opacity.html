@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c91fc028bd15a9cbb0530d87b288541e {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c91fc028bd15a9cbb0530d87b288541e" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c91fc028bd15a9cbb0530d87b288541e = L.map(
+                "map_c91fc028bd15a9cbb0530d87b288541e",
+                {
+                    center: [35.19403166, 129.06151836],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 7,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_3d33912ba1395b0d33c0c2a8e4ebbe78 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_3d33912ba1395b0d33c0c2a8e4ebbe78.addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+            var circle_marker_3c840bb456184451408b718131396134 = L.circleMarker(
+                [37.53934562772943, 127.214776054013],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_0f58ad4fd9bd3aa5a374543c91fce56e = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b22b54201a2335fd395bf37574facc2f = $(`<div id="html_b22b54201a2335fd395bf37574facc2f" style="width: 100.0%; height: 100.0%;">LG 트윈스 원정 승률: 40.0%</div>`)[0];
+                popup_0f58ad4fd9bd3aa5a374543c91fce56e.setContent(html_b22b54201a2335fd395bf37574facc2f);
+            
+        
+
+        circle_marker_3c840bb456184451408b718131396134.bindPopup(popup_0f58ad4fd9bd3aa5a374543c91fce56e)
+        ;
+
+        
+    
+    
+            var circle_marker_60eaee798fa6454bdb1353d26e0bca0c = L.circleMarker(
+                [37.5162500127349, 127.079283389854],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_43c4fc923daae13601b959199c785fd4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a68c7994e735c3556b6bcfad08d4489b = $(`<div id="html_a68c7994e735c3556b6bcfad08d4489b" style="width: 100.0%; height: 100.0%;">두산 베어스 원정 승률: 40.0%</div>`)[0];
+                popup_43c4fc923daae13601b959199c785fd4.setContent(html_a68c7994e735c3556b6bcfad08d4489b);
+            
+        
+
+        circle_marker_60eaee798fa6454bdb1353d26e0bca0c.bindPopup(popup_43c4fc923daae13601b959199c785fd4)
+        ;
+
+        
+    
+    
+            var circle_marker_25205eee14f6a5b581a941e54bdc2eed = L.circleMarker(
+                [37.4982125677913, 126.867088741096],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4125, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_b15adfa0be256f820b0aac926a4e1363 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_70dbe4b30065238feb68999c8f6014f0 = $(`<div id="html_70dbe4b30065238feb68999c8f6014f0" style="width: 100.0%; height: 100.0%;">키움 히어로즈 원정 승률: 41.2%</div>`)[0];
+                popup_b15adfa0be256f820b0aac926a4e1363.setContent(html_70dbe4b30065238feb68999c8f6014f0);
+            
+        
+
+        circle_marker_25205eee14f6a5b581a941e54bdc2eed.bindPopup(popup_b15adfa0be256f820b0aac926a4e1363)
+        ;
+
+        
+    
+    
+            var circle_marker_11a558386baf95c49240bce094f8b80f = L.circleMarker(
+                [37.4350819826381, 126.690759830613],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.375, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_bacf99a41054826c2fa07a08510cdd5f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_807983f940ab4cb437cd34b41384ad0a = $(`<div id="html_807983f940ab4cb437cd34b41384ad0a" style="width: 100.0%; height: 100.0%;">SSG 랜더스 원정 승률: 37.5%</div>`)[0];
+                popup_bacf99a41054826c2fa07a08510cdd5f.setContent(html_807983f940ab4cb437cd34b41384ad0a);
+            
+        
+
+        circle_marker_11a558386baf95c49240bce094f8b80f.bindPopup(popup_bacf99a41054826c2fa07a08510cdd5f)
+        ;
+
+        
+    
+    
+            var circle_marker_b126affbe4d157a2da64a63a779954c3 = L.circleMarker(
+                [35.2219848625101, 128.579580117268],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.425, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_76ca63640838d01dae78d720370e420a = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_8ad852fbcdc95d85631cdc8ef580cadd = $(`<div id="html_8ad852fbcdc95d85631cdc8ef580cadd" style="width: 100.0%; height: 100.0%;">NC 다이노스 원정 승률: 42.5%</div>`)[0];
+                popup_76ca63640838d01dae78d720370e420a.setContent(html_8ad852fbcdc95d85631cdc8ef580cadd);
+            
+        
+
+        circle_marker_b126affbe4d157a2da64a63a779954c3.bindPopup(popup_76ca63640838d01dae78d720370e420a)
+        ;
+
+        
+    
+    
+            var circle_marker_df95dd24d012d0eaef02b11f538e2165 = L.circleMarker(
+                [35.8411289243023, 128.681236372268],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_f0f98c09907aa3378caa13e8d380f257 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_90e4f08b2898a4a6ee6cbe1918c9e525 = $(`<div id="html_90e4f08b2898a4a6ee6cbe1918c9e525" style="width: 100.0%; height: 100.0%;">삼성 라이온즈 원정 승률: 45.0%</div>`)[0];
+                popup_f0f98c09907aa3378caa13e8d380f257.setContent(html_90e4f08b2898a4a6ee6cbe1918c9e525);
+            
+        
+
+        circle_marker_df95dd24d012d0eaef02b11f538e2165.bindPopup(popup_f0f98c09907aa3378caa13e8d380f257)
+        ;
+
+        
+    
+    
+            var circle_marker_e96651abbffaae1417a652af7539da6f = L.circleMarker(
+                [35.1694249627668, 126.888805470329],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.3875, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_88da9e8a95ab5e87e6c0338a4a48e7f2 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1359c3a50344de1f420731460ccbcc62 = $(`<div id="html_1359c3a50344de1f420731460ccbcc62" style="width: 100.0%; height: 100.0%;">KIA 타이거즈 원정 승률: 38.8%</div>`)[0];
+                popup_88da9e8a95ab5e87e6c0338a4a48e7f2.setContent(html_1359c3a50344de1f420731460ccbcc62);
+            
+        
+
+        circle_marker_e96651abbffaae1417a652af7539da6f.bindPopup(popup_88da9e8a95ab5e87e6c0338a4a48e7f2)
+        ;
+
+        
+    
+    
+            var circle_marker_d03c094e9f0655d0a6482b9fbe71a92e = L.circleMarker(
+                [36.3173370007388, 127.428013823451],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.45, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_1fc86bf5c877e591f75ecabbedcc9dac = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_e1016e9d69acec7a59630af86523ee2b = $(`<div id="html_e1016e9d69acec7a59630af86523ee2b" style="width: 100.0%; height: 100.0%;">한화 이글스 원정 승률: 45.0%</div>`)[0];
+                popup_1fc86bf5c877e591f75ecabbedcc9dac.setContent(html_e1016e9d69acec7a59630af86523ee2b);
+            
+        
+
+        circle_marker_d03c094e9f0655d0a6482b9fbe71a92e.bindPopup(popup_1fc86bf5c877e591f75ecabbedcc9dac)
+        ;
+
+        
+    
+    
+            var circle_marker_dacfd7a66e4d3dec251f767260a72a64 = L.circleMarker(
+                [37.2978428909635, 127.011348102567],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4875, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_bd8e4430935a0ce5fb3273ab466c5ab1 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_2a5d781ce97348d5790769039a84907d = $(`<div id="html_2a5d781ce97348d5790769039a84907d" style="width: 100.0%; height: 100.0%;">KT 위즈 원정 승률: 48.8%</div>`)[0];
+                popup_bd8e4430935a0ce5fb3273ab466c5ab1.setContent(html_2a5d781ce97348d5790769039a84907d);
+            
+        
+
+        circle_marker_dacfd7a66e4d3dec251f767260a72a64.bindPopup(popup_bd8e4430935a0ce5fb3273ab466c5ab1)
+        ;
+
+        
+    
+    
+            var circle_marker_945dc1049c729af6a16884d23ff6982c = L.circleMarker(
+                [35.19403166, 129.06151836],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.4986, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10, "stroke": true, "weight": 3}
+            ).addTo(map_c91fc028bd15a9cbb0530d87b288541e);
+        
+    
+        var popup_6445d72e5f4d34c910682cb2ca456b75 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_137dd7e102310750f82997606a8e2ad0 = $(`<div id="html_137dd7e102310750f82997606a8e2ad0" style="width: 100.0%; height: 100.0%;">롯데 홈 원정 승률: 49.9%</div>`)[0];
+                popup_6445d72e5f4d34c910682cb2ca456b75.setContent(html_137dd7e102310750f82997606a8e2ad0);
+            
+        
+
+        circle_marker_945dc1049c729af6a16884d23ff6982c.bindPopup(popup_6445d72e5f4d34c910682cb2ca456b75)
+        ;
+
+        
+    
+</script>
+</html>
